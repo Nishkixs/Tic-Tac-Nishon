@@ -9,8 +9,8 @@
      <nav class="navbar">
        <button type="button" id="sign-in-nav" class="btn btn-default navbar-btn navbar-right">Sign in</button>
        <button type="button" id="sign-up-nav" class="btn btn-default navbar-btn navbar-right">Sign up</button>
-       <button type="button" id="sign-out" class="btn btn-default navbar-btn navbar-right">Sign out</button>
-       <button type="button" id="change-password" class="btn btn-default navbar-btn navbar-right">Change password</button>
+       <button type="button" id="sign-out-nav" class="btn btn-default navbar-btn navbar-right">Sign out</button>
+       <button type="button" id="change-password-nav" class="btn btn-default navbar-btn navbar-right">Change password</button>
      </nav>
 
 
@@ -44,8 +44,8 @@
            </div>
            <div class="modal-body">
              <form id='sign-in'>
-               <input name="credentials[email]" placeholder="email address">
-               <input name="credentials[password]" placeholder="password">
+               <input name="credentials[email]" type="text" placeholder="email address">
+               <input name="credentials[password]" type="password" placeholder="password">
                <input type="submit" name="submit" value="Sign In">
              </form>
            </div>
@@ -75,6 +75,46 @@
            <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="sign-up-button">Sign Up!</button>
+            </div>
+         </div>
+       </div>
+     </div>
+     <!-- change password-->
+     <div class="modal fade" id="changePasswordModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+           </div>
+           <div class="modal-body">
+             <form id='change-password'>
+               <input name="passwords[old]" type="password" placeholder="Old Password">
+               <input name="passwords[new]" type="password" placeholder="New Password">
+               <input type="submit" name="submit" value="Change Password">
+             </form>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="change-password-button">Change Password</button>
+            </div>
+         </div>
+       </div>
+     </div>
+     <div class="modal fade" id="signOutModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">Sign Out</h4>
+           </div>
+           <div class="modal-body">
+             <form id='sign-out'>
+               <input type="submit" name="submit" value="Sign Out">
+             </form>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
          </div>
        </div>

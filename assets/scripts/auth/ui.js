@@ -13,8 +13,22 @@ const signInSuccess = (data) => {
   app.user = data.user;
 
 };
+
+const changePasswordSuccess = () => {
+  console.log('password changed YAY!');
+};
+
+const signOutSuccess = () => {
+    app.user = null;
+    console.log('Successfully signed out');
+
+
+};
+
 module.exports = {
  success,
  failure,
- signInSuccess
+ signInSuccess,
+ changePasswordSuccess,
+ signOutSuccess,
 };

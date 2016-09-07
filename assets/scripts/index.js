@@ -12,11 +12,6 @@
 
 
 
-$(document).ready(function() {
-
-
-});
-
 const authEvents = require('./auth/events.js');
 
 // On document ready
