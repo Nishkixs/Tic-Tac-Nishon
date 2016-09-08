@@ -6,32 +6,40 @@
      <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
    </head>
    <body>
+     <!-- NAV BAR -->
      <nav class="navbar">
        <button type="button" id="sign-in-nav" class="btn btn-default navbar-btn navbar-right">Sign in</button>
        <button type="button" id="sign-up-nav" class="btn btn-default navbar-btn navbar-right">Sign up</button>
        <button type="button" id="sign-out-nav" class="btn btn-default navbar-btn navbar-right">Sign out</button>
        <button type="button" id="change-password-nav" class="btn btn-default navbar-btn navbar-right">Change password</button>
+       <button type="button" id="new-game-nav" class="btn btn-default navbar-btn navbar-right newgamebutton">New Game</button>
      </nav>
 
-
+<!-- Tic-Tac-Toe Board -->
      <h1>Tic Tac Toe</h1>
      <div class="game-board">
        <div class="row-top">
-         <div class="col-xs-4 tl" id=1></div>
-         <div class="col-xs-4 tm" id=2></div>
-         <div class="col-xs-4 tr"id=3></div>
+         <div class="col-xs-4 tl" id=0></div>
+         <div class="col-xs-4 tm" id=1></div>
+         <div class="col-xs-4 tr"id=2></div>
        </div>
        <div class="row-middle">
-         <div class="col-xs-4 ml" id=4></div>
-         <div class="col-xs-4 mm" id=5></div>
-         <div class="col-xs-4 mr" id=6></div>
+         <div class="col-xs-4 ml" id=3></div>
+         <div class="col-xs-4 mm" id=4></div>
+         <div class="col-xs-4 mr" id=5></div>
        </div>
        <div class="row-bottom">
-         <div class="col-xs-4 bl" id=7></div>
-         <div class="col-xs-4 bm" id=8></div>
-         <div class="col-xs-4 br" id=9></div>
+         <div class="col-xs-4 bl" id=6></div>
+         <div class="col-xs-4 bm" id=7></div>
+         <div class="col-xs-4 br" id=8></div>
        </div>
      </div>
+
+   <!-- <div class= "choice">
+  <div class= "choice-x"><h1 class= "big-letter">X</h1></div>
+  <div class= "choice-o"><h1 class= "big-letter">O</h1></div>
+  <a class="new-game"><div class= "reset">New Game</div></a>
+</div> -->
 
 
 <!--  Sign in modal-->
@@ -46,12 +54,11 @@
              <form id='sign-in'>
                <input name="credentials[email]" type="text" placeholder="email address">
                <input name="credentials[password]" type="password" placeholder="password">
-               <input type="submit" name="submit" value="Sign In">
+               <input class="btn btn-primary" type="submit" name="submit" value="Sign In">
              </form>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="sign-in-button">Sign in!</button>
             </div>
          </div>
        </div>
@@ -69,12 +76,11 @@
                <input name="credentials[email]" type="text" placeholder="email address">
                <input name="credentials[password]" type="password" placeholder="password">
                 <input name="credentials[password_confirmation]" type="password" placeholder="confirm password">
-                <input type="submit" name="submit" value="Sign Up">
+                <input class="btn btn-primary" type="submit" name="submit" value="Sign Up">
              </form>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="sign-up-button">Sign Up!</button>
             </div>
          </div>
        </div>
@@ -91,16 +97,16 @@
              <form id='change-password'>
                <input name="passwords[old]" type="password" placeholder="Old Password">
                <input name="passwords[new]" type="password" placeholder="New Password">
-               <input type="submit" name="submit" value="Change Password">
+               <input class="btn btn-primary" type="submit" name="submit" value="Change Password">
              </form>
            </div>
            <div class="modal-footer">
              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="change-password-button">Change Password</button>
             </div>
          </div>
        </div>
      </div>
+     <!-- Sign Out Modal -->
      <div class="modal fade" id="signOutModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
        <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -110,15 +116,16 @@
            </div>
            <div class="modal-body">
              <form id='sign-out'>
-               <input type="submit" name="submit" value="Sign Out">
+               <input class="btn btn-default" type="submit" name="submit" value="Sign Out">
              </form>
            </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
          </div>
        </div>
      </div>
+
+
 
    </body>
 </html>

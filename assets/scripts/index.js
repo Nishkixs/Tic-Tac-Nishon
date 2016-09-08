@@ -19,3 +19,11 @@ $(() => {
   authEvents.addHandlers();
 
 });
+
+const logicEvents = require('./logic/events.js');
+
+// On document ready
+$(() => {
+  logicEvents.addHandlers();
+
+});
