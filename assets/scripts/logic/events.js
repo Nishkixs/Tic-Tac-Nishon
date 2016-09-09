@@ -59,21 +59,32 @@ const XOonBoard = function (event) {
 //
 //  };
 
-const endOfGame = function(){
+const endOfGame = function() {
 
-  if (gameBoardArray[0]===gameBoardArray[1]&&gameBoardArray[0]===gameBoardArray[2]||
-    gameBoardArray[3]===gameBoardArray[4]&&gameBoardArray[3]===gameBoardArray[5]||
-    gameBoardArray[6]===gameBoardArray[7]&&gameBoardArray[6]===gameBoardArray[8]||
-    gameBoardArray[0]===gameBoardArray[3]&&gameBoardArray[0]===gameBoardArray[6]||
-    gameBoardArray[1]===gameBoardArray[4]&&gameBoardArray[1]===gameBoardArray[7]||
-    gameBoardArray[2]===gameBoardArray[5]&&gameBoardArray[2]===gameBoardArray[8]||
-    gameBoardArray[0]===gameBoardArray[4]&&gameBoardArray[0]===gameBoardArray[8]||
-    gameBoardArray[2]===gameBoardArray[4]&&gameBoardArray[2]===gameBoardArray[6]||
-);
-{console.log('someone won')}
+  if
+  (gameBoardArray[0] === gameBoardArray[1] && gameBoardArray[0] === gameBoardArray[2]!== '' ||
+    gameBoardArray[3] === gameBoardArray[4] && gameBoardArray[3] === gameBoardArray[5]!== '' ||
+    gameBoardArray[6] === gameBoardArray[7] && gameBoardArray[6] === gameBoardArray[8]!== '' ||
+    gameBoardArray[0] === gameBoardArray[3] && gameBoardArray[0] === gameBoardArray[6]!== '' ||
+    gameBoardArray[1] === gameBoardArray[4] && gameBoardArray[1] === gameBoardArray[7]!== '' ||
+    gameBoardArray[2] === gameBoardArray[5] && gameBoardArray[2] === gameBoardArray[8]!== '' ||
+    gameBoardArray[0] === gameBoardArray[4] && gameBoardArray[0] === gameBoardArray[8]!== '' ||
+    gameBoardArray[2] === gameBoardArray[4] && gameBoardArray[2] === gameBoardArray[6]!== '' ) {
+console.log('winner!');
+
+} else if (){
+
+  console.log ('draw');
+
 
 
 };
+
+
+};
+
+
+
 
 
 
