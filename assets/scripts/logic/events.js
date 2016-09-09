@@ -30,10 +30,6 @@ const onNewGame = function onNewGame(event) {
 // };
 
 
-
-
-
-
 // const onGetGames = function onGetGames(event){
 //   event.preventDefault();
 //   api.getGames()
@@ -138,6 +134,7 @@ console.log("x wins");
         counter = 0;
         gameOver = true;
         console.log("tie");
+
       //$('.user-message').text('tie...gross');
     }
       return null;
@@ -190,7 +187,7 @@ const xOonBoard = function (event) {
     console.log(gameBoardArray);
     getWinner();
 
-    api.updateGame(id,app.player);
+    api.updateGame(id,app.player,gameOver);
 
   }
 };

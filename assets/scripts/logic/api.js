@@ -13,9 +13,9 @@ const newGame = (data) => {
   });
 };
 
-const updateGame = (id,x) => {
+const updateGame = (id,value,TorF) => {
   return $.ajax({
-    url: app.host + '/games/:id',
+    url: app.host + '/games/'+app.game.id,
     method: "PATCH",
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -24,9 +24,9 @@ const updateGame = (id,x) => {
       "game": {
         "cell": {
           "index": id,
-          "value": x,
+          "value": value,
         },
-        "over": false
+        "over": TorF
       }
     }
   });
