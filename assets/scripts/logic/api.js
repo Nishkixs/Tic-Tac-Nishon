@@ -32,9 +32,24 @@ const updateGame = (id,value,TorF) => {
   });
 };
 
+const getGame = (data) => {
+  return $.ajax({
+    url: app.host + '/games/'+data.id,
+    method: "GET",
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data,
+  });
+  };
+
+
+
 
 module.exports = {
 newGame,
-updateGame
+updateGame,
+getGame,
+
 
 };
