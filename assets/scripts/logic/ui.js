@@ -4,22 +4,24 @@ const app = require('../app');
 
 
 const newGameSuccess = (data) => {
-  $('#new-game-nav').text('Play Again!');
+$('#new-game-nav').text('Play Again!');
   app.game = data.game;
-  console.log(app);
-};
-const success = (data) => {
-  console.log(data);
+  $(".print-id").text("ID of this game is: " + data.game.id);
+  $(".print-id").show();
+
+  //console.log(app);
+//};
+//const success = (data) => {
+  //console.log(data);
 };
 
 const getSuccess = (data) => {
-
-$('.getinfo').text(data.game.cells);
-  console.log(data);
+app.game = data.game;
+$('.print-id').text("[" + data.game.cells + "]");
 };
 module.exports = {
   newGameSuccess,
-  success,
+  //success,
   getSuccess
 
 };

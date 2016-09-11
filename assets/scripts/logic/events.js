@@ -13,16 +13,19 @@ let gameBoardArray = ['', '', '', '', '', '', '', '', ''];
 
 let counter = 0;
 
+
+
 const onNewGame = function onNewGame(event) {
   event.preventDefault();
   counter = 0;
   player = 'x';
   gameOver = false;
+  $('.game-board').show();
   $('.printArray').text('');
   $('.over-lay').text('');
-
   $('.col-xs-4').text('');
-  $('.col-xs-4').data('val', '0');
+  $('#get-game').show();
+  $('.make-account').text("LET'S GET READY TO RUMBLEEEEEEEE!!!!!!!");
   let data = {};
   api.newGame(data)
     .done(ui.newGameSuccess)
@@ -31,94 +34,66 @@ const onNewGame = function onNewGame(event) {
 
 
 
-const onUpdateGame = function onUpdateGame() {
-  event.preventDefault();
-  let data = {};
-  api.updateGame(data)
-    .done(ui.newGameSuccess)
-    .fail(ui.failure);
-};
-
-
-// const onGetGames = function onGetGames(event){
-//   event.preventDefault();
-//   api.getGames()
-//     .done(ui.getGamesSuccess)
-//     .fail(ui.failure);
-// };
-
-
-
-
 const clearBoard = function() {
   gameBoardArray = ['', '', '', '', '', '', '', '', ''];
-
-  console.log("board cleared");
+  //console.log("board cleared");
 };
 
-const allX = function(cellOne, cellTwo, cellThree) {
+const threeX = function(cellOne, cellTwo, cellThree) {
   return (cellOne === 'x') && (cellTwo === 'x') && (cellThree === 'x');
 };
 
-//function to check if three cells hold a value of O
-const allO = function(cellOne, cellTwo, cellThree) {
+
+const threeO = function(cellOne, cellTwo, cellThree) {
   return (cellOne === 'o') && (cellTwo === 'o') && (cellThree === 'o');
 };
 
-//this function passes in the horizontal cells and passes them to the allX
-//function to check if there is any row across of all X's
-const xWinRows = function() {
-  return allX(gameBoardArray[0], gameBoardArray[1], gameBoardArray[2]) ||
-    allX(gameBoardArray[3], gameBoardArray[4], gameBoardArray[5]) ||
-    allX(gameBoardArray[6], gameBoardArray[7], gameBoardArray[8]);
+
+const rowWinX = function() {
+  return threeX(gameBoardArray[0], gameBoardArray[1], gameBoardArray[2]) ||
+    threeX(gameBoardArray[3], gameBoardArray[4], gameBoardArray[5]) ||
+    threeX(gameBoardArray[6], gameBoardArray[7], gameBoardArray[8]);
 };
 
-//this function passes in the horizontal cells and passes them to the allO
-//function to check if there is any row across of all O's
+
 const oWinRows = function() {
-  return allO(gameBoardArray[0], gameBoardArray[1], gameBoardArray[2]) ||
-    allO(gameBoardArray[3], gameBoardArray[4], gameBoardArray[5]) ||
-    allO(gameBoardArray[6], gameBoardArray[7], gameBoardArray[8]);
+  return threeO(gameBoardArray[0], gameBoardArray[1], gameBoardArray[2]) ||
+    threeO(gameBoardArray[3], gameBoardArray[4], gameBoardArray[5]) ||
+    threeO(gameBoardArray[6], gameBoardArray[7], gameBoardArray[8]);
 };
 
-//this function passes in the vertical cells and passes them to the allX
-//function to check if there is any column of all X's
-const xWinCol = function() {
-  return allX(gameBoardArray[0], gameBoardArray[3], gameBoardArray[6]) ||
-    allX(gameBoardArray[1], gameBoardArray[4], gameBoardArray[7]) ||
-    allX(gameBoardArray[2], gameBoardArray[5], gameBoardArray[8]);
+
+const columnWinX = function() {
+  return threeX(gameBoardArray[0], gameBoardArray[3], gameBoardArray[6]) ||
+    threeX(gameBoardArray[1], gameBoardArray[4], gameBoardArray[7]) ||
+    threeX(gameBoardArray[2], gameBoardArray[5], gameBoardArray[8]);
 };
 
-//this function passes in the vertical cells and passes them to the allO
-//function to check if there is any column of all O's
+
 const oWinCol = function() {
-  return allO(gameBoardArray[0], gameBoardArray[3], gameBoardArray[6]) ||
-    allO(gameBoardArray[1], gameBoardArray[4], gameBoardArray[7]) ||
-    allO(gameBoardArray[2], gameBoardArray[5], gameBoardArray[8]);
+  return threeO(gameBoardArray[0], gameBoardArray[3], gameBoardArray[6]) ||
+    threeO(gameBoardArray[1], gameBoardArray[4], gameBoardArray[7]) ||
+    threeO(gameBoardArray[2], gameBoardArray[5], gameBoardArray[8]);
 };
 
-//this function passes in the diagonal cells and passes them to the allX
-//function to check if there is any diagonal of all X's
-const xWinDiag = function() {
-  return allX(gameBoardArray[0], gameBoardArray[4], gameBoardArray[8]) ||
-    allX(gameBoardArray[6], gameBoardArray[4], gameBoardArray[2]);
+
+const diagonalWinX = function() {
+  return threeX(gameBoardArray[0], gameBoardArray[4], gameBoardArray[8]) ||
+    threeX(gameBoardArray[6], gameBoardArray[4], gameBoardArray[2]);
 };
 
-//this function passes in the diagonal cells and passes them to the allO
-//function to check if there is any diagonal of all O's
+
 const oWinDiag = function() {
-  return allO(gameBoardArray[0], gameBoardArray[4], gameBoardArray[8]) ||
-    allO(gameBoardArray[6], gameBoardArray[4], gameBoardArray[2]);
+  return threeO(gameBoardArray[0], gameBoardArray[4], gameBoardArray[8]) ||
+    threeO(gameBoardArray[6], gameBoardArray[4], gameBoardArray[2]);
 };
 
-//this function runs the previous functions to check if there are any X winning
-//scenarios
+
 const xWins = function() {
-  return xWinRows() || xWinCol() || xWinDiag();
+  return rowWinX() || columnWinX() || diagonalWinX();
 };
 
-//this function runs the previous functions to check if there are any O winning
-//scenarios
+
 const oWins = function() {
   return oWinRows() || oWinCol() || oWinDiag();
 };
@@ -127,73 +102,32 @@ const getWinner = function() {
 
 
   if (xWins('X')) {
-    console.log("x wins");
-    $('.over-lay').text('X IS VICTORIOUS!');
-    //$('.col-xs-4').data('val', '1');
-    //gameBoardArray = [];
-    //counter = 0;
+    //console.log("x wins");
+    $('.make-account').text('X Wins');
+    $('#get-game').hide();
+    $('.game-board').hide();
     gameOver = true;
   } else if (oWins('O')) {
-    console.log("o wins");
-    $('.over-lay').text('O EQUALS CHAMPION!');
-  //  $('.col-xs-4').data('val', '1');
-    //gameBoardArray = [];
-    //counter = 0;
+    //console.log("o wins");
+    $('.make-account').text('O IS THE WINNER!');
+    $('#get-game').hide();
+    $('.game-board').hide();
     gameOver = true;
-  }else{
-    if(counter === 9){
+  } else {
+    if (counter === 9) {
       gameOver = true;
-   counter = 0;
-   gameBoardArray = [];
-   gameOver = true;
- $('.over-lay').text('Like kissing your sister');
-}
- return null;
-}
+      counter = 0;
+      gameBoardArray = [];
+      $('.make-account').text('Tie: Like kissing your sister');
+      $('#get-game').hide();
+      $('.game-board').hide();
+    }
+
+    return null;
+  }
 };
-//  if (counter === 9) {
-    // for (let i in gameBoardArray) {
-    //   if (gameBoardArray[i] === '') {
-    //     gameOver = false;
-    //   }
-    //
-    // else if (gameBoardArray[i] !== ''){
-    //   gameOver = true;
 
 
-  //gameBoardArray = [];
-  // counter = 0;
-
-
-  //$('.user-message').text('tie...gross');
-
-// update.update((counter - 1), $(this).text(), over);
-
-
-
-
-
-
-// const turnHandlerOff = function(id) {
-//   $('#' + id).off('click', xOonBoard);
-//
-// };
-//
-// const isValidMove = function(id) {
-//   if ($('#' + id).html() !== '') {
-//     turnHandlerOff(id);
-//   }
-// };
-// let player = 'o';
-// const playerSwitch = function(){
-//   if (player === 'x') {
-//     player = 'o';
-// }
-// else if (player === 'o') {
-//       player = 'x';
-//
-// }
-// };
 
 const xOonBoard = function(event) {
   let cellClicked = event.target,
@@ -208,11 +142,11 @@ const xOonBoard = function(event) {
     gameBoardArray[id] = player;
     getWinner();
     api.updateGame(id, player, gameOver);
-    console.log("gameOver: " + gameOver);
+    //console.log("gameOver: " + gameOver);
 
-    console.log(gameBoardArray);
+    //console.log(gameBoardArray);
     player = 'o';
-    console.log(counter);
+    //console.log(counter);
 
 
   }
@@ -222,25 +156,24 @@ const xOonBoard = function(event) {
     gameBoardArray[id] = player;
     getWinner();
     api.updateGame(id, player, gameOver);
-    console.log("gameOver: " + gameOver);
+    //console.log("gameOver: " + gameOver);
 
-    console.log(gameBoardArray);
+    //console.log(gameBoardArray);
     player = 'x';
-    console.log(counter);
+    //console.log(counter);
 
   }
-
-
 };
 
 
-const onGetGame = function(event){
+const onGetGame = function(event) {
   event.preventDefault();
-  let data = getFormFields(this);
-   api.getGame(data)
-     .done(ui.getSuccess)
-     .fail(ui.failure);
-  };
+  let data = getFormFields(event.target);
+  //console.log("data is " + data);
+  api.getGame(data)
+    .done(ui.getSuccess)
+    .fail(ui.failure);
+};
 
 
 
@@ -248,7 +181,14 @@ const addHandlers = () => {
   $('.newgamebutton').on('click', onNewGame);
   $('.newgamebutton').on('click', clearBoard);
   $('.col-xs-4').on('click', xOonBoard);
-  $('#get-game').on('submit',onGetGame);
+  $('#get-game').on('submit', onGetGame);
+  $('.game-board').hide();
+  $('#get-game').hide();
+  $("#new-game-nav").hide();
+  $("#change-password-nav").hide();
+  $("#sign-out-nav").hide();
+
+
 };
 
 
@@ -261,9 +201,6 @@ module.exports = {
   gameBoardArray,
   clearBoard,
   gameOver,
-  onUpdateGame,
   getFormFields,
 
-  //isValidMove,
-  //turnHandlerOff
 };

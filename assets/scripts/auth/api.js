@@ -11,7 +11,7 @@ const signUp = (data) => {
 });
 };
 const signIn = (data) => {
-  console.log(data);
+  //console.log(data);
 
   return  $.ajax({
     url: app.host + '/sign-in',
@@ -23,8 +23,7 @@ const signIn = (data) => {
 const changePassword = (data) => {
   console.log(data);
   console.log(app.user);
-
-  return  $.ajax({
+return  $.ajax({
     url: app.host + '/change-password/'+ app.user.id,
     method: 'PATCH',
     headers: {

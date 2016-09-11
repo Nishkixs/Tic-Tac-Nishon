@@ -14,6 +14,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
  event.preventDefault();
  let data = getFormFields(event.target);
+ 
 
  api.signIn(data)
    .done(ui.signInSuccess)
@@ -28,6 +29,15 @@ const onChangePassword = function (event) {
 };
 const onSignOut = function () {
  event.preventDefault();
+ $('.game-board').hide();
+ $('#get-game').hide();
+ $('.print-id').hide();
+ $("#new-game-nav").hide();
+
+
+ $('.make-account').text('Please Create an Account and Sign in to Get Started');
+
+
 
  api.signOut()
    .done(ui.signOutSuccess)

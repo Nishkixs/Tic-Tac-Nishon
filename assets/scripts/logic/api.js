@@ -34,12 +34,11 @@ const updateGame = (id,value,TorF) => {
 
 const getGame = (data) => {
   return $.ajax({
-    url: app.host + '/games/'+data.id,
+    url: app.host + '/games/'+ data.candy,
     method: "GET",
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
-    data,
   });
   };
 
